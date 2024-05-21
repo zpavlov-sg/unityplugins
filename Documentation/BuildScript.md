@@ -46,12 +46,13 @@ Running `python3 build.py --help` will show the list of flags available for cust
 ### Plug-in Selection
 - **Flag:** `--plugin-list`
 - **Short version:** `-p`
-- **Possible values:** `all`, `Core`, `Accessibility`, `CoreHaptics`, `GameController`, `GameKit`, `PHASE`
+- **Possible values:** `all`, `Core`, `Accessibility`, `CloudKit`, `CoreHaptics`, `GameController`, `GameKit`, `PHASE`
 - **Default value:** `all`
-- **Description:** Selects a subset of plug-ins to perform the [build](#build-actions), [clean](#clean-actions), or [test](#test-builds) action or actions selected. For example, you may want to perform the default actions on only a subset of plug-ins, such as Apple.Core, Apple.GameKit, and Apple.GameController. This can be done by running:
+- **Description:** Selects a subset of plug-ins to perform the [build](#build-actions), [clean](#clean-actions), or [test](#test-builds) action or actions selected. For example, you may want to perform the default actions on only a subset of plug-ins, such as Apple.Core, Apple.GameKit, Apple.CloudKit and Apple.GameController. This can be done by running:
+
 
 ```bash
-python3 build.py -p Core GameKit GameController
+python3 build.py -p Core CloudKit GameKit GameController
 ```
 
 ### Platform Selection

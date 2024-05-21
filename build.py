@@ -70,7 +70,8 @@ CTX.printer = Printer(prompt_theme)
 # Handle command line args
 
 argument_parser = argparse.ArgumentParser(description="Builds all native libraries, packages plug-ins, and moves packages to build folder.")
-argument_parser.add_argument("-p", "--plugin-list", dest="plugin_list", nargs='*', default=[PluginID.ALL], help=f"Selects the plug-ins to process. Possible values are: {PluginID.ACCESSIBILITY}, {PluginID.CORE}, {PluginID.CORE_HAPTICS}, {PluginID.GAME_CONTROLLER}, {PluginID.GAME_KIT}, {PluginID.PHASE}, or {PluginID.ALL}. Default is: {PluginID.ALL}")
+
+argument_parser.add_argument("-p", "--plugin-list", dest="plugin_list", nargs='*', default=[PluginID.ALL], help=f"Selects the plug-ins to process. Possible values are: {PluginID.ACCESSIBILITY}, {PluginID.CORE}, {PluginID.CORE_HAPTICS}, {PluginID.GAME_CONTROLLER}, {PluginID.GAME_KIT}, {PluginId.CLOUD_KIT}, {PluginID.PHASE}, or {PluginID.ALL}. Default is: {PluginID.ALL}")
 argument_parser.add_argument("-m", "--platforms", dest="platform_list", nargs='*', default=[PlatformID.ALL], help=f"Selects the desired platforms to target when building native libraries. Possible values are: {PlatformID.IOS}, {PlatformID.IOS_SIMULATOR}, {PlatformID.MACOS}, {PlatformID.TVOS}, {PlatformID.TVOS_SIMULATOR}, {PlatformID.VISIONOS}, {PlatformID.VISIONOS_SIMULATOR}, {PlatformID.SIMULATORS}, {PlatformID.DEVICES} or {PlatformID.ALL}. Default is: {PlatformID.ALL}")
 argument_parser.add_argument("-b", "--build-action", dest="build_actions", nargs='*', default=[BuildActionID.BUILD, BuildActionID.PACK], help=f"Sets the build actions for the selected plug-ins. Possible values are: {BuildActionID.BUILD}, {BuildActionID.PACK}, {BuildActionID.NONE} or {BuildActionID.ALL}. Defaults are: {BuildActionID.BUILD}, {BuildActionID.PACK}")
 argument_parser.add_argument("-bc","--build-config", dest="build_config", default=ConfigID.ALL, help=f"Sets the build configuration to compile. Possible values are: {ConfigID.RELEASE}, {ConfigID.DEBUG}, or {ConfigID.ALL} which builds all other configs. Default is: {ConfigID.ALL}")
@@ -203,6 +204,7 @@ def Main():
 
     # -------------------------------------------------------------------------
     
+
     CTX.build_configs = {
         ConfigID.RELEASE: False,
         ConfigID.DEBUG: False
@@ -228,6 +230,7 @@ def Main():
         PluginID.CORE: False,
         PluginID.CORE_HAPTICS: False,
         PluginID.GAME_CONTROLLER: False,
+        PluginID.CLOUD_KIT: False,
         PluginID.GAME_KIT: False,
         PluginID.PHASE: False
     }
