@@ -12,12 +12,7 @@ namespace Apple.CloudKit.Editor {
 	public class AppleCloudKitBuildStep : AppleBuildStep {
 		public override string DisplayName => "CloudKit";
 
-		readonly Dictionary<BuildTarget, string> _libraryTable = new Dictionary<BuildTarget, string>
-		{
-			{BuildTarget.iOS, "CloudKitWrapper.framework"},
-			{BuildTarget.tvOS, "CloudKitWrapper.framework"},
-			{BuildTarget.StandaloneOSX, "CloudKitWrapper.bundle"}
-		};
+		public override BuildTarget[] SupportedTargets => new BuildTarget[] {BuildTarget.iOS, BuildTarget.tvOS, BuildTarget.StandaloneOSX, BuildTarget.VisionOS};
 
 #if UNITY_EDITOR_OSX
 		public override void OnProcessEntitlements(AppleBuildProfile _, BuildTarget buildTarget, string _1, PlistDocument entitlements) {
@@ -27,20 +22,18 @@ namespace Apple.CloudKit.Editor {
 			}
 		}
 
-		public override void OnProcessFrameworks(AppleBuildProfile _, BuildTarget buildTarget, string pathToBuiltTarget, PBXProject pbxProject) {
-			if (_libraryTable.ContainsKey(buildTarget)) {
-				string libraryName = _libraryTable[buildTarget];
-				string libraryPath = AppleFrameworkUtility.GetPluginLibraryPathForBuildTarget(libraryName, buildTarget);
-				if (String.IsNullOrEmpty(libraryPath)) {
-					Debug.Log($"Failed to locate path for library: {libraryName}");
-				} else {
-					AppleFrameworkUtility.CopyAndEmbed(libraryPath, buildTarget, pathToBuiltTarget, pbxProject);
-					AppleFrameworkUtility.AddFrameworkToProject("CloudKit.framework", false, buildTarget, pbxProject);
-				}
-			} else {
-				Debug.Log($"Processing {this.DisplayName} frameworks for unsupported platform. Skipping.");
-			}
-		}
+		public override void OnProcessFrameworks(AppleBuildProfile _, BuildTarget buildTarget, string generatedProjectPath, PBXProject pbxProject)
+        {
+            if (Array.IndexOf(SupportedTargets, buildTarget) > -1)
+            {
+                AppleNativeLibraryUtility.ProcessWrapperLibrary(DisplayName, buildTarget, generatedProjectPath, pbxProject);
+                AppleNativeLibraryUtility.AddPlatformFrameworkDependency("CloudKit.framework", false, buildTarget, pbxProject);
+            }
+            else
+            {
+                Debug.LogWarning($"[{DisplayName}] No native library defined for Unity build target {buildTarget.ToString()}. Skipping.");
+            }
+        }
 #endif
 	}
 }

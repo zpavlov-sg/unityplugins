@@ -8,6 +8,7 @@ class PluginID:
     CORE = "Core"
     CORE_HAPTICS = "CoreHaptics"
     GAME_CONTROLLER = "GameController"
+    CLOUD_KIT = "CloudKit"
     GAME_KIT = "GameKit"
     PHASE = "PHASE"
     ALL = "all"

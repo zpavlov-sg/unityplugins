@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1420"
+   LastUpgradeVersion = "1540"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
       <PostActions>
          <ExecutionAction
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
@@ -14,9 +15,9 @@
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "52D567C629C4C326007292D9"
-                     BuildableName = "CloudKitWrapper.bundle"
-                     BlueprintName = "CloudKitWrapper_macOS"
+                     BlueprintIdentifier = "1BC87C612BFD4FD100D706C9"
+                     BuildableName = "CloudKitWrapper.framework"
+                     BlueprintName = "CloudKitWrapper_visionOS"
                      ReferencedContainer = "container:CloudKitWrapper.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -32,24 +33,23 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52D567C629C4C326007292D9"
-               BuildableName = "CloudKitWrapper.bundle"
-               BlueprintName = "CloudKitWrapper_macOS"
+               BlueprintIdentifier = "1BC87C612BFD4FD100D706C9"
+               BuildableName = "CloudKitWrapper.framework"
+               BlueprintName = "CloudKitWrapper_visionOS"
                ReferencedContainer = "container:CloudKitWrapper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -65,9 +65,18 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1BC87C612BFD4FD100D706C9"
+            BuildableName = "CloudKitWrapper.framework"
+            BlueprintName = "CloudKitWrapper_visionOS"
+            ReferencedContainer = "container:CloudKitWrapper.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
